@@ -1,0 +1,27 @@
+# Define the DataRecord type with fields `id`, `name`, and `salary`
+type DataRecord {
+    id: Int
+    name: String
+    salary: Int
+}
+
+# Define queries for retrieving records
+type Query {
+    # Retrieve all records with optional filters and sorting
+    allRecords(nameFilter: String, sortBy: String, sortDirection: String): [DataRecord]
+
+    # Retrieve a record by its ID
+    recordById(id: Int!): DataRecord
+}
+
+# Define mutations for creating, updating, and deleting records
+type Mutation {
+    # Create a new record
+    createRecord(name: String!, salary: Int!): DataRecord
+
+    # Update an existing record by its ID
+    updateRecord(id: Int!, name: String, salary: Int): DataRecord
+
+    # Delete a record by its ID
+    deleteRecord(id: Int!): Boolean
+}
